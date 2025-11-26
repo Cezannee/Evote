@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Voting OSIS YPUI Parung</title>
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+    <!-- Halaman Login -->
+    <div id="loginPage" class="page active">
+        <div class="login-container">
+            <div class="login-box">
+                <div class="logo">
+                    <img src="assets/logo.png" alt="Logo YPUI" class="logo-image">
+                    <h1>E-Voting OSIS</h1>
+                    <p>YPUI Parung</p>
+                </div>
+
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label>Username</label>
+                        <input type="text" id="username" placeholder="Masukkan username" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" id="password" placeholder="Masukkan password" required>
+                    </div>
+
+                    <button type="submit" class="btn-primary">Login</button>
+                </form>
+
+                <div class="demo-info">
+                    <p><strong>Demo Akun:</strong></p>
+                    <p>Peserta: peserta1 / pass123</p>
+                    <p>Admin: admin / admin123</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Halaman Voting Peserta -->
+    <div id="votingPage" class="page">
+        <nav class="navbar">
+            <div class="nav-content">
+                <h2>E-Voting OSIS - YPUI Parung</h2>
+                <div class="user-info">
+                    <span id="userNameDisplay"></span>
+                    <button onclick="logout()" class="btn-logout">Logout</button>
+                </div>
+            </div>
+        </nav>
+
+        <div class="container">
+            <div class="voting-header">
+                <h1>Pilih Kandidat Ketua OSIS</h1>
+                <p>Pilih salah satu kandidat di bawah ini</p>
+            </div>
+
+            <div id="candidatesList" class="candidates-grid"></div>
+        </div>
+    </div>
+
+    <!-- Halaman Admin -->
+    <div id="adminPage" class="page">
+        <nav class="navbar">
+            <div class="nav-content">
+                <h2>Admin Dashboard - E-Voting OSIS</h2>
+                <div class="user-info">
+                    <span id="adminNameDisplay"></span>
+                    <button onclick="logout()" class="btn-logout">Logout</button>
+                </div>
+            </div>
+        </nav>
+
+        <div class="container">
+            <div class="admin-controls">
+                <h2>Kontrol Voting</h2>
+                <div class="status-card">
+                    <p>Status Voting: <span id="votingStatus" class="status-active">Aktif</span></p>
+                    <button onclick="toggleVoting()" id="toggleBtn" class="btn-primary">Tutup Voting</button>
+                </div>
+            </div>
+
+            <div class="admin-section">
+                <h2>Hasil Voting Real-Time</h2>
+                <div id="resultsContainer" class="results-grid"></div>
+            </div>
+
+            <div class="admin-section">
+                <h2>Data Peserta</h2>
+                <div class="table-container">
+                    <table id="pesertaTable">
+                        <thead>
+                            <tr>
+                                <th>NIS</th>
+                                <th>Nama Peserta</th>
+                                <th>Username</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="pesertaTableBody"></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="admin-section">
+                <h2>Kelola Kandidat</h2>
+                <div id="candidateManagement" class="candidates-management"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Konfirmasi Vote -->
+    <div id="voteModal" class="modal">
+        <div class="modal-content">
+            <h2>Konfirmasi Pilihan</h2>
+            <p>Apakah Anda yakin memilih <strong id="selectedCandidateName"></strong>?</p>
+            <p class="warning">Pilihan tidak dapat diubah setelah dikonfirmasi!</p>
+            <div class="modal-actions">
+                <button onclick="closeModal()" class="btn-secondary">Batal</button>
+                <button onclick="confirmVote()" class="btn-primary">Ya, Pilih</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/script.js"></script>
+</body>
+</html>
